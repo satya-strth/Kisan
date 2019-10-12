@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundcolor"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/reg_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="All Registrations"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textColor="@android:color/holo_blue_dark"
+        android:layout_marginBottom="5dp">
+    </TextView>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/reg_header"/>
+</RelativeLayout>

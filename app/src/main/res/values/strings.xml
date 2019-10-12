@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Kisan</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="hint">hint</string>
+
+    <string-array name="search_array">
+        <item>Registration No.</item>
+        <item>Mobile Number</item>
+        <item>Aadhaar</item>
+    </string-array>
+
+</resources>

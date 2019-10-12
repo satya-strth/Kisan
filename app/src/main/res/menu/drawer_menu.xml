@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/dashboard"
+            android:icon="@drawable/ic_dashboard_black_24dp"
+            android:title="Dashboard" />
+        <item
+            android:id="@+id/add_user"
+            android:icon="@drawable/add_user"
+            android:title="Add User" />
+
+        <item
+            android:id="@+id/search_user"
+            android:icon="@drawable/search_user"
+            android:title="Search User" />
+
+        <item
+            android:id="@+id/view_all"
+            android:icon="@drawable/view_all"
+            android:title="View All" />
+
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/settings"
+            android:title="Settings" />
+
+        <item
+            android:id="@+id/about"
+            android:icon="@drawable/about"
+            android:title="About" />
+
+
+    </group>
+
+</menu>
