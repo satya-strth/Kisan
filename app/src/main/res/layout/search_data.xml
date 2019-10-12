@@ -16,7 +16,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView_S_reg"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -35,7 +35,6 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView_S_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -54,7 +53,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView_S_fname"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -73,7 +72,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView_S_ward"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -92,7 +91,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView_S_vill"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -113,7 +112,7 @@
             >
 
             <TextView
-                android:id="@+id/textView_S_mob"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -132,7 +131,6 @@
             android:layout_height="match_parent" >
 
             <TextView
-                android:id="@+id/textView_S_aadhaar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -151,7 +149,7 @@
             android:layout_height="match_parent" >
 
             <TextView
-                android:id="@+id/textView_S_bank"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -170,7 +168,6 @@
             android:layout_height="match_parent" >
 
             <TextView
-                android:id="@+id/textView_S_ifsc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

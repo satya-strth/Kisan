@@ -1,9 +1,13 @@
 package com.aryatech.kisan;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +18,13 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class SearchUserFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+import static com.aryatech.kisan.DatabaseHelper.COL_1;
+import static com.aryatech.kisan.DatabaseHelper.TABLE_NAME;
 
+public class SearchUserFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+   private SQLiteDatabase mDatabase;
     Spinner spinner;
+    private SearchDataAdapter mAdapter;
     EditText registration, name, fathers_name, ward, village, mobile, aadhaar, bank, ifsc;
     Button button_save, button_reset,button_search;
 
@@ -43,10 +51,26 @@ public class SearchUserFragment extends Fragment implements AdapterView.OnItemSe
         spinner.setAdapter(adapter);
         button_search = view.findViewById(R.id.button_search);
         Search();
+        DatabaseHelper dbhelper=new DatabaseHelper(getContext());
+        mDatabase=dbhelper.getReadableDatabase();
+        RecyclerView recyclerView=view.findViewById(R.id.recycleview_search);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mAdapter=new SearchDataAdapter(getContext(),this.searchData());
+        recyclerView.setAdapter(mAdapter);
+
+
+
     }
 
+    private Cursor searchData() {
+        String item1= (String) spinner.getSelectedItem();
+        DatabaseHelper dbhelper=new DatabaseHelper(getContext());
+        mDatabase=dbhelper.getReadableDatabase();
+        String query = "SELECT * FROM "+TABLE_NAME+" WHERE "+COL_1+" like '%"+item1+"%'";
+        Cursor row = mDatabase.rawQuery(query, null);
+        return row;
 
-
+    }
 
 
     @Override
@@ -64,10 +88,8 @@ public class SearchUserFragment extends Fragment implements AdapterView.OnItemSe
                     @Override
                     public void onClick(View view) {
                         String item1= (String) spinner.getSelectedItem();
+                        searchData();
                         Toast.makeText(getActivity(), "Selected: " + item1, Toast.LENGTH_LONG).show();
-
-
-
 
                     }
                 }
