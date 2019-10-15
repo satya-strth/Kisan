@@ -57,17 +57,21 @@ public class SearchUserFragment extends Fragment implements AdapterView.OnItemSe
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mAdapter=new SearchDataAdapter(getContext(),this.searchData());
         recyclerView.setAdapter(mAdapter);
-
-
-
     }
 
-    private Cursor searchData() {
+    public Cursor searchData() {
         String item1= (String) spinner.getSelectedItem();
         DatabaseHelper dbhelper=new DatabaseHelper(getContext());
         mDatabase=dbhelper.getReadableDatabase();
-        String query = "SELECT * FROM "+TABLE_NAME+" WHERE "+COL_1+" like '%"+item1+"%'";
-        Cursor row = mDatabase.rawQuery(query, null);
+        Cursor row;
+        row= mDatabase.query(
+                TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                item1,null
+        );
         return row;
 
     }
@@ -87,6 +91,7 @@ public class SearchUserFragment extends Fragment implements AdapterView.OnItemSe
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
                         String item1= (String) spinner.getSelectedItem();
                         searchData();
                         Toast.makeText(getActivity(), "Selected: " + item1, Toast.LENGTH_LONG).show();
