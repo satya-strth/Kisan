@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -24,6 +25,7 @@ import static com.aryatech.kisan.DatabaseHelper.TABLE_NAME;
 public class SearchUserFragment extends Fragment implements AdapterView.OnItemSelectedListener {
    private SQLiteDatabase mDatabase;
     Spinner spinner;
+    Cursor cursor;
     private SearchDataAdapter mAdapter;
     EditText registration, name, fathers_name, ward, village, mobile, aadhaar, bank, ifsc;
     Button button_save, button_reset,button_search;
@@ -50,30 +52,22 @@ public class SearchUserFragment extends Fragment implements AdapterView.OnItemSe
 // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
         button_search = view.findViewById(R.id.button_search);
-        Search();
+
         DatabaseHelper dbhelper=new DatabaseHelper(getContext());
         mDatabase=dbhelper.getReadableDatabase();
         RecyclerView recyclerView=view.findViewById(R.id.recycleview_search);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        //Search();
         mAdapter=new SearchDataAdapter(getContext(),this.searchData());
         recyclerView.setAdapter(mAdapter);
     }
 
     public Cursor searchData() {
-        String item1= (String) spinner.getSelectedItem();
+        //String item1= (String) spinner.getSelectedItem();
         DatabaseHelper dbhelper=new DatabaseHelper(getContext());
         mDatabase=dbhelper.getReadableDatabase();
-        Cursor row;
-        row= mDatabase.query(
-                TABLE_NAME,
-                null,
-                null,
-                null,
-                null,
-                item1,null
-        );
-        return row;
-
+        String query = "Select * FROM " + TABLE_NAME + " WHERE " + COL_1 + " = " + "1";
+       return mDatabase.rawQuery(query,null);
     }
 
 
@@ -87,18 +81,14 @@ public class SearchUserFragment extends Fragment implements AdapterView.OnItemSe
 
 
     public void Search() {
-        button_search.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
+            button_search.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
 
-                        String item1= (String) spinner.getSelectedItem();
-                        searchData();
-                        Toast.makeText(getActivity(), "Selected: " + item1, Toast.LENGTH_LONG).show();
-
+                        }
                     }
-                }
-        );
+            );
 
     }
 
